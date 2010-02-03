@@ -10,14 +10,15 @@ class zd_ticket {
 
 	public function __construct ($xml_source) {
 	
-	$url = ZENDESK_URL . 'tickets.xml';		
+	$url = ZENDESK_URL . 'tickets.xml';	
+	$usrpass = ZENDESK_USER . ':' . ZENDESK_PASS;	
 		
 	$ch = curl_init();
 	$request = $xml_source;
 	$headers = array('Content-type: application/xml','Content-Length: ' . strlen($request));
 	
 	$ch = curl_init();
-	curl_setopt($ch, CURLOPT_USERPWD, 'facebook@zendesk.com:98awbef1');
+	curl_setopt($ch, CURLOPT_USERPWD, $usrpass);
 	curl_setopt($ch, CURLOPT_URL, $url);
 	curl_setopt($ch, CURLOPT_POST, 1);
 	curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
